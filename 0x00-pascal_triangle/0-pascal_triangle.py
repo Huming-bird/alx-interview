@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-# this script holds a function for creating
-# pascals triangle
+""" this script holds a function for creating
+""" pascals triangle
 
 
 def pascal_triangle(n):
