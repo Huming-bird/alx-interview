@@ -7,25 +7,14 @@ def pascal_triangle(n):
     this function returns a list
     """
 
-    answer = []
-    answer1 = [[1]]
-    answer2 = [[1], [1, 1]]
-    final = answer2.copy()
-
     if n <= 0:
-        return answer
+        return []
 
-    elif n == 1:
-        return answer1
-
-    elif n == 2:
-        return answer2
-    
-    elif n > 2:
-        for i in range(2, n):
-            mid = final[-1]
-            for j in mid:
-                if j == 1 and j == mid[0]:
-
-            
-
+    answer = [[1]]
+    for i in range(1, n):
+        row = [1]
+        for j in range(1, i):
+            row.append(answer[i - 1][j - 1] + answer[i - 1][j])
+        row.append(1)
+        answer.append(row)
+    return answer
