@@ -2,6 +2,7 @@
 # this script holds a function for creating
 # pascals triangle
 
+
 def pascal_triangle(n):
     """
     this function returns a list
