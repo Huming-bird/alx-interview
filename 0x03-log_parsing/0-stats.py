@@ -28,6 +28,7 @@ status_code_count = {
 
 try:
     for line in sys.stdin:
+        print(line)
         parsed_line = line.split()
         parsed_line = parsed_line[::-1]
 
