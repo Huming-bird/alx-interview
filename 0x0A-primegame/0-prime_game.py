@@ -1,49 +1,36 @@
 #!/usr/bin/python3
-"""
-Prime Game
+"""This kodule define the isWinner and other helper functions
 """
 
 
 def isWinner(x, nums):
-    """main"""
-    def is_prime(num):
-        """sub"""
-        if num < 2:
-            return False
-        for i in range(2, int(num**0.5) + 1):
-            if num % i == 0:
-                return False
-        return True
+    """Define the Prime game
+    """
 
-    def get_next_prime(nums):
-        """sub2"""
-        for num in nums:
-            if is_prime(num):
-                return num
-        return None
+    def sieve_of_eratosthenes(n):
+        primes = [True] * (n + 1)
+        primes[0] = primes[1] = False
+        for i in range(2, int(n ** 0.5) + 1):
+            if primes[i]:
+                for j in range(i * i, n + 1, i):
+                    primes[j] = False
+        return [i for i in range(n + 1) if primes[i]]
+
+    def can_win(n):
+        primes = sieve_of_eratosthenes(n)
+        if n in primes:
+            return True
+        return False
 
     maria_wins = 0
     ben_wins = 0
 
     for n in nums:
-        current_player = "Maria"
-
-        while True:
-            prime = get_next_prime(nums)
-            if prime is None:
-                break
-
-            nums = [num for num in nums if num % prime != 0]
-
-            if current_player == "Maria":
-                current_player = "Ben"
+        if can_win(n):
+            if n % 2 == 0:
+                maria_wins += 1
             else:
-                current_player = "Maria"
-
-        if current_player == "Maria":
-            maria_wins += 1
-        else:
-            ben_wins += 1
+                ben_wins += 1
 
     if maria_wins > ben_wins:
         return "Maria"
