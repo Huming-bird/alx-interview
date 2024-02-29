@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This kodule define the isWinner and other helper functions
+"""This kodule define the isWinner amd other helper functions
 """
 
 
